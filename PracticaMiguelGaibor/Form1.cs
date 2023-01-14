@@ -19,13 +19,15 @@ namespace PracticaMiguelGaibor
             if (tbUser.Text.Equals("") || tbPass.Text.Equals(""))
             {
                 MessageBox.Show("Ingrese credenciales");
+                MessageBox.Show
+                    ("Ingrese credenciales", "OOPS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             try
             {
                 SqlConnection conn = new SqlConnection(conection);
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("select nombre , apellido , idrol from persona where usuario = @usuario and password = @pass", conn);
+                SqlCommand cmd = new SqlCommand("select a.nombre , a.apellido ,  a.idrol, b.ABREVIATURA , b.NOMBRE from persona a join estado b on a.US_ESTADO = b.IDESTADO where usuario = @usuario and password = @pass", conn);
                 cmd.Parameters.AddWithValue("@usuario", tbUser.Text);
                 cmd.Parameters.AddWithValue("@pass", tbPass.Text);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -39,24 +41,27 @@ namespace PracticaMiguelGaibor
                             //Buscador
                             this.Hide();
                             PrincipalBuscador pb = new PrincipalBuscador();
-                            pb.lblLogin.Text = reader.GetString(0);
+                            pb.lblLogin.Text = reader.GetString(0) + " " + reader.GetString(1);
                             pb.Show();
                             break;
 
                         case 2:
                             //ciudadano
+                            this.Hide();
+                            PrincipalCiudadano pc = new PrincipalCiudadano();
+                            pc.lblLoginC.Text = reader.GetString(0) + " " + reader.GetString(1);
+                            pc.lblEstadoUS.Text = reader.GetString(4);
+                            pc.lblAbre.Text = reader.GetString(3);
+                            pc.Show();
                             break;
                     }
                 }
-                else
-                {
-                    MessageBox.Show("NEL");
-                }
-
-
             }
             catch (Exception ex)
-            { MessageBox.Show("OOPS: " + ex.ToString()); }
+            {
+                MessageBox.Show
+                    ("Credenciales incorrectas, por favor valide su usuario o contraseña e intente nuevamente", "OOPS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -41,11 +41,10 @@
             // 
             this.lblLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLogin.AutoSize = true;
-            this.lblLogin.Location = new System.Drawing.Point(902, 0);
+            this.lblLogin.Location = new System.Drawing.Point(952, 0);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(50, 20);
+            this.lblLogin.Size = new System.Drawing.Size(0, 20);
             this.lblLogin.TabIndex = 0;
-            this.lblLogin.Text = "label1";
             // 
             // btnBuscar
             // 
@@ -116,6 +115,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PrincipalBuscador";
             this.Text = "Buscador";
+            this.Load += new System.EventHandler(this.PrincipalBuscador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscador)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

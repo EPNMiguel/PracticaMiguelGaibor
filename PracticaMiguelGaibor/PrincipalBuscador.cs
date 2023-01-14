@@ -20,6 +20,9 @@ namespace PracticaMiguelGaibor
 
         private async void btnBuscar_Click(object sender, EventArgs e)
         {
+            Log logger = Log.getInstance();
+             
+            logger.logea(lblLogin.Text, 1, "");
             try
             {
                 HttpClient client = new HttpClient();
@@ -40,8 +43,7 @@ namespace PracticaMiguelGaibor
                         }
                         dgvBuscador.AutoGenerateColumns= true;  
                         dgvBuscador.DataSource= countryInfo;
-                        dgvBuscador.Columns["date"].Visible = false;
-                        dgvBuscador.Columns["recovered"].Visible = false;
+                        dgvBuscador.Columns["date"].Visible = false; 
                         dgvBuscador.Columns["hash"].Visible = false;
                         dgvBuscador.Columns[0].HeaderCell.Value = "Fecha";
                     }
@@ -49,6 +51,17 @@ namespace PracticaMiguelGaibor
                 }
             }catch(Exception ex) { }
         }
-         
+
+        private void PrincipalBuscador_Load(object sender, EventArgs e)
+        {
+            this.FormClosed += new FormClosedEventHandler(cierraVentana);
+        }
+
+        private void cierraVentana(object sender, EventArgs e)
+        {
+            Form1 f1 = new Form1();
+            this.Hide();
+            f1.Show();
+        }
     }
 }
