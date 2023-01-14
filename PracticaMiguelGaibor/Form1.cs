@@ -25,14 +25,28 @@ namespace PracticaMiguelGaibor
             {
                 SqlConnection conn = new SqlConnection(conection);
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("select nombre , apellido from persona where usuario = @usuario and password = @pass", conn);
+                SqlCommand cmd = new SqlCommand("select nombre , apellido , idrol from persona where usuario = @usuario and password = @pass", conn);
                 cmd.Parameters.AddWithValue("@usuario", tbUser.Text);
                 cmd.Parameters.AddWithValue("@pass", tbPass.Text);
-                SqlDataReader reader = cmd.ExecuteReader(); 
-                reader.Read();  
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
                 if (!reader.GetString(0).IsNullOrEmpty())
                 {
-                    MessageBox.Show("Simón " + reader.GetString(0)+ " " + reader.GetString(1));
+                    MessageBox.Show("Simón " + reader.GetString(0) + " " + reader.GetString(1));
+                    switch (reader.GetInt32(2))
+                    {
+                        case 1:
+                            //Buscador
+                            this.Hide();
+                            PrincipalBuscador pb = new PrincipalBuscador();
+                            pb.lblLogin.Text = reader.GetString(0);
+                            pb.Show();
+                            break;
+
+                        case 2:
+                            //ciudadano
+                            break;
+                    }
                 }
                 else
                 {

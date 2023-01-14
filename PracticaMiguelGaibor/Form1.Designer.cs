@@ -122,6 +122,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Práctica Miguel Gaibor";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
