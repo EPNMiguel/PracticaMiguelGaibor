@@ -22,7 +22,7 @@ namespace PracticaMiguelGaibor
         {
             Log logger = Log.getInstance();
              
-            logger.logea(lblLogin.Text, 1, "");
+            logger.logea(lblLogin.Text, 1, "Busca datos en API US");
             try
             {
                 HttpClient client = new HttpClient();

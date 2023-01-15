@@ -33,7 +33,7 @@ namespace PracticaMiguelGaibor
         private async void btnBuscarC_Click(object sender, EventArgs e)
         {
             Log logger = Log.getInstance();
-            logger.logea(lblLoginC.Text, 2, "");
+            logger.logea(lblLoginC.Text, 2, "Busca datos en API STATES");
             try
             {
                 HttpClient client = new HttpClient();
