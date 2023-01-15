@@ -18,7 +18,7 @@ namespace PracticaMiguelGaibor
         {
             if (tbUser.Text.Equals("") || tbPass.Text.Equals(""))
             {
-                MessageBox.Show("Ingrese credenciales");
+                
                 MessageBox.Show
                     ("Ingrese credenciales", "OOPS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -53,6 +53,12 @@ namespace PracticaMiguelGaibor
                             pc.lblEstadoUS.Text = reader.GetString(4);
                             pc.lblAbre.Text = reader.GetString(3);
                             pc.Show();
+                            break;
+                        case 3:
+                            this.Hide();    
+                            PrincipalAdmin pa = new PrincipalAdmin();
+                            pa.lblLoginA.Text = reader.GetString(0) + " " + reader.GetString(1);
+                            pa.Show();  
                             break;
                     }
                 }
