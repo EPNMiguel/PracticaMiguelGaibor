@@ -15,8 +15,7 @@ namespace PracticaMiguelGaibor
 
             if (ValidaDatos())
             {
-                GuardaUsuario();
-                TraeHistorial();
+                GuardaUsuario(); 
             }
 
         }

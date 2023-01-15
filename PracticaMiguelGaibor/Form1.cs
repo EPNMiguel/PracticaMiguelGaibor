@@ -34,7 +34,7 @@ namespace PracticaMiguelGaibor
                 reader.Read();
                 if (!reader.GetString(0).IsNullOrEmpty())
                 {
-                    MessageBox.Show("Simón " + reader.GetString(0) + " " + reader.GetString(1));
+                    MessageBox.Show("Acceso correcto " + reader.GetString(0) + " " + reader.GetString(1));
                     switch (reader.GetInt32(2))
                     {
                         case 1:
