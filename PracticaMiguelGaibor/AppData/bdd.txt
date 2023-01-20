@@ -1,0 +1,1 @@
+﻿la base de datos es un archivo MDF, se puede abrir con MSSQL Manager Studio
